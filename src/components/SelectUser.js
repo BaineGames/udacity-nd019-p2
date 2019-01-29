@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import UserCard from "./UserCard";
 
 class SelectUser extends Component {
     render() {
-        console.log(this.props);
         return (
             <div>
-                <h3>Users</h3>
+                <h3>Select User to Login As</h3>
                 <ul>
                     {this.props.userIds.map((userId) =>(
                         <li key={userId}>
-                            {userId}
+                            <UserCard id={userId} />
                         </li>
                     ))}
                 </ul>
