@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleLoadData } from "../actions/shared";
 
 import SelectUser from "./SelectUser";
