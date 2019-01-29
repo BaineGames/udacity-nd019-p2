@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleLoadData } from "../actions/shared";
 
 import SelectUser from "./SelectUser";
 import QuestionList from "./QuestionList";
+import Menu from "./Menu";
 
 class App extends Component {
 
@@ -15,14 +17,23 @@ class App extends Component {
     const { auth } = this.props;
 
     return (
-      <div className="App">
-        {auth ?
-        <QuestionList />
-        :
-        <SelectUser />
-        }
+      <Router>
+        <div className="App">
+          {auth ?
+          <Fragment>
+            <Menu />
+            <QuestionList />
+          </Fragment>
+          :
+          <SelectUser />
+          }
 
-      </div>
+        </div>
+
+
+
+      </Router>
+      
     );
   }
 }
