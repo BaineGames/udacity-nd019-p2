@@ -6,15 +6,13 @@ import QuestionCard from "./QuestionCard";
 class QuestionList extends Component {
 
     state = {
-        unAnsweredVisible : false
+        AnsweredVisible : false
     };
 
     handleCheckbox = (e) =>{
-        console.log(this.props);
         this.setState(() => ({
-            unAnsweredVisible : !this.state.unAnsweredVisible
+            AnsweredVisible : !this.state.AnsweredVisible
         }));
-    
     }
     
     render() {
@@ -22,15 +20,15 @@ class QuestionList extends Component {
         console.log(this.props);
         return (    
             <Fragment>
-            Show Unanswered: <input type="checkbox" value="false" onChange={(e) => this.handleCheckbox(e)}/>
+            Show Answered: <input type="checkbox" onChange={(e) => this.handleCheckbox(e)}/>
             <ul className="questionList">
             {   
-                (this.state.unAnsweredVisible ?
-                    userUnanswered.map((questionId) =>(
+                (this.state.AnsweredVisible ?
+                    userAnswered.map((questionId) =>(
                         <li key={questionId}><QuestionCard id={questionId} /></li>
                     ))
                 :
-                userAnswered.map((questionId) =>(
+                userUnanswered.map((questionId) =>(
                     <li key={questionId}><QuestionCard id={questionId} /></li>
                 ))
                 )
@@ -45,7 +43,7 @@ class QuestionList extends Component {
 function mapStateToProps({ questions, authentication }) {
     const userAnswered = [];
     const userUnanswered = [];
-
+    
     for(let q in questions){
 
         console.log(q);

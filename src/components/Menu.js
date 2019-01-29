@@ -11,6 +11,9 @@ class Menu extends Component {
     }
 
     render() { 
+
+        const { auth } = this.props;
+
         return (
             <ul className="menu" >
                 <li>
@@ -29,7 +32,7 @@ class Menu extends Component {
                     </NavLink>
                 </li>
                 <li onClick={(e) => this.loginUser()}>
-                    Logout
+                    Logout {auth}
                 </li>
             </ul>
         )
@@ -38,7 +41,7 @@ class Menu extends Component {
 
 function mapStateToProps({ authentication}){
     return {
-        authentication
+        auth: authentication
     }
 }
 
