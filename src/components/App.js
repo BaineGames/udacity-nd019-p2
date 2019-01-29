@@ -3,17 +3,32 @@ import { connect } from "react-redux";
 import { handleLoadData } from "../actions/shared";
 
 import SelectUser from "./SelectUser";
+import QuestionList from "./QuestionList";
 
 class App extends Component {
+
   componentDidMount(){
     this.props.dispatch(handleLoadData());
-
   }
+
   render() {
+    const { auth } = this.props;
+
     return (
-      <div className="App"><SelectUser /></div>
+      <div className="App">
+        {auth ?
+        <QuestionList />
+        :
+        <SelectUser />
+        }
+
+      </div>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ authentication }){
+  return {auth: authentication};
+}
+
+export default connect(mapStateToProps)(App);
