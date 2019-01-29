@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleLoadData } from "../actions/shared";
-
+import '../styles/App.css';
 import SelectUser from "./SelectUser";
 import QuestionList from "./QuestionList";
 import Menu from "./Menu";
