@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
+import { connect } from "react-redux";
+import { handleLoadData } from "../actions/shared";
 
 class App extends Component {
+  componentDidMount(){
+    this.props.dispatch(handleLoadData());
+
+  }
   render() {
     return (
       <div className="App"></div>
@@ -9,4 +14,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
