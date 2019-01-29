@@ -5,7 +5,7 @@ export default function users (state = {}, action){
         case USER_GET_ALL : 
             return {
                 ...state,
-                ...action.users
+                ...action.userList
             }
         default : 
             return state;
