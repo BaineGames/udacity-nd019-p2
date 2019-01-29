@@ -20,10 +20,10 @@ class QuestionDetail extends Component {
         return (
             <Fragment>
             <div>Would you rather:</div>
-            <p>{opt1.text} {(opt1.votes.indexOf(auth) !== -1) ? "my answer" : null}</p>
+            <p className={(opt1.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt1.text}</p>
             {(userAnswerAny) ?
             <AnswerStats id={question.id} opt="optionOne"/> : null}
-            <p>{opt2.text} {(opt2.votes.indexOf(auth) !== -1) ? "my answer" : null}</p>
+            <p className={(opt2.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt2.text}</p>
             {(userAnswerAny) ?
             <AnswerStats id={question.id} opt="optionTwo"/> : null}
             <div>Asked by {author}</div>

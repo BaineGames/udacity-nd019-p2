@@ -17,7 +17,7 @@ class QuestionCard extends Component {
         return (
             <Link to={"/questions/" + question.id}>
             <div className={"questionCard " + (userAnswerAny ? "answered" : "unanswered")} >
-                Would you rather {question.optionOne.text} OR {question.optionTwo.text} {question.timestamp}
+                Would you rather {question.optionOne.text} OR {question.optionTwo.text}
             </div>
             </Link>
         )
