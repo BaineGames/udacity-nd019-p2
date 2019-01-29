@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
+import { connect } from "react-redux";
+import { loginUser } from "../actions/authentication";
 
 class Menu extends Component {
+
+    loginUser = () => {
+        const { dispatch } = this.props;
+        dispatch(loginUser(null));
+    }
 
     render() { 
         return (
@@ -11,11 +18,28 @@ class Menu extends Component {
                         Home
                     </NavLink>
                 </li>
-                <li>Ask</li>
-                <li>Leaderboard</li>
+                <li>
+                    <NavLink to="/ask">
+                        Ask
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/leaderboard">
+                        Leaderboard
+                    </NavLink>
+                </li>
+                <li onClick={(e) => this.loginUser()}>
+                    Logout
+                </li>
             </ul>
         )
     }
 }
 
-export default (Menu);
+function mapStateToProps({ authentication}){
+    return {
+        authentication
+    }
+}
+
+export default connect(mapStateToProps)(Menu);
