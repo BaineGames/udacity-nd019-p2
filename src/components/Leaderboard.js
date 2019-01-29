@@ -8,9 +8,10 @@ class Leaderboard extends Component {
         const { users, leaderboard } = this.props;
         console.log(leaderboard);
         return (
-            <div>
-           {leaderboard.map(leader => <div key={leader.user.id}> { leader.user.name} {leader.score} {Object.keys(leader.user.answers).length} {Object.keys(leader.user.questions).length}</div>)} 
-       </div>
+            <ol>
+           {leaderboard.map(leader => <li key={leader.user.id}> { leader.user.name} {leader.score} {Object.keys(leader.user.answers).length} {Object.keys(leader.user.questions).length}
+           <img src={leader.user.avatarURL} width="45px" /></li>)} 
+       </ol>
         )
     }
 }
