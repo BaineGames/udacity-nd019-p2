@@ -29,10 +29,11 @@ class QuestionDetail extends Component {
             return (
                 <Fragment>
                 <div>Would you rather:</div>
-                <p onClick={(e) => this.answerQuestion(e,"optionOne")} className={(opt1.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt1.text}</p>
+                <button onClick={(e) => this.answerQuestion(e,"optionOne")} className={(opt1.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt1.text}</button>
                 {(userAnswerAny) ?
                 <AnswerStats id={question.id} opt="optionOne"/> : null}
-                <p onClick={(e) => this.answerQuestion(e,"optionTwo")} className={(opt2.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt2.text}</p>
+                <p> -- OR -- </p>
+                <button onClick={(e) => this.answerQuestion(e,"optionTwo")} className={(opt2.votes.indexOf(auth) !== -1) ? "myAnswer" : null}>{opt2.text}</button>
                 {(userAnswerAny) ?
                 <AnswerStats id={question.id} opt="optionTwo"/> : null}
                 <div>Asked by {author}</div>

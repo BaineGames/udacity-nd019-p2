@@ -1,3 +1,15 @@
 .myAnswer {
   border: 1px solid red;
 }
+
+.userCard {
+  border: 1px solid red;
+  width:200px;
+  cursor:pointer;
+  margin:.25rem;
+}
+
+.userCard:hover {
+  background-color:#ccc;
+  border:1px solid blue;
+}
