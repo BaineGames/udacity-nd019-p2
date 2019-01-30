@@ -15,7 +15,6 @@ export default function users (state = {}, action){
             }
 
         case ANSWER_UPDATE :
-            console.log("USERS", action);
             const { authedUser, qid, answer } = action.answer;
             return { ...state, [ authedUser ] : {
                         ...state[ authedUser ],

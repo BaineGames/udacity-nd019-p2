@@ -17,7 +17,6 @@ class QuestionList extends Component {
     
     render() {
         const { userAnswered, userUnanswered } = this.props;
-        console.log(this.props);
         return (    
             <Fragment>
             Show Answered: <input type="checkbox" onChange={(e) => this.handleCheckbox(e)}/>
@@ -25,11 +24,11 @@ class QuestionList extends Component {
             {   
                 (this.state.AnsweredVisible ?
                     userAnswered.map((questionId) =>(
-                        <li key={questionId}><QuestionCard id={questionId} /></li>
+                        <li key={questionId.id}><QuestionCard id={questionId.id} /></li>
                     ))
                 :
                 userUnanswered.map((questionId) =>(
-                    <li key={questionId}><QuestionCard id={questionId} /></li>
+                    <li key={questionId.id}><QuestionCard id={questionId.id} /></li>
                 ))
                 )
                 
@@ -43,20 +42,22 @@ class QuestionList extends Component {
 function mapStateToProps({ questions, authentication }) {
     const userAnswered = [];
     const userUnanswered = [];
-    
+
     for(let q in questions){
 
-        console.log(q);
         let opt1 = questions[q].optionOne.votes.indexOf(authentication) !== -1;
         let opt2 = questions[q].optionTwo.votes.indexOf(authentication) !== -1;
         let answered = opt1 || opt2;
 
         if(answered){
-            userAnswered.push(q);
+            userAnswered.push({ id: q, time: questions[q].timestamp});
         }else{
-            userUnanswered.push(q);
+            userUnanswered.push({ id: q, time: questions[q].timestamp});
         }
     }
+    console.log("ANSWERD", userUnanswered);
+    userAnswered.sort(function(a,b){ return b.time - a.time });
+    userUnanswered.sort(function(a,b){ return b.time - a.time });
     return {userAnswered: userAnswered,
     userUnanswered: userUnanswered};
     }

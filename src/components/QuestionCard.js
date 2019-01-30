@@ -9,8 +9,8 @@ class QuestionCard extends Component {
         const { question, auth } = this.props;    
         console.log(this.props);
 
-        const userAnswerOpt1 = (question.optionOne.votes.indexOf(auth) != -1) ? true : false;
-        const userAnswerOpt2 = (question.optionTwo.votes.indexOf(auth) != -1) ? true : false;
+        const userAnswerOpt1 = (question.optionOne.votes.indexOf(auth) !== -1) ? true : false;
+        const userAnswerOpt2 = (question.optionTwo.votes.indexOf(auth) !== -1) ? true : false;
 
         const userAnswerAny = userAnswerOpt1 || userAnswerOpt2;
 

@@ -5,12 +5,14 @@ class Leaderboard extends Component {
 
 
     render() {
-        const { users, leaderboard } = this.props;
+        const { leaderboard } = this.props;
         console.log(leaderboard);
         return (
             <ol>
-           {leaderboard.map(leader => <li key={leader.user.id}> { leader.user.name} {leader.score} {Object.keys(leader.user.answers).length} {Object.keys(leader.user.questions).length}
-           <img src={leader.user.avatarURL} width="45px" /></li>)} 
+           {leaderboard.map(leader => <li key={leader.user.id}>
+           <p>Name: { leader.user.name} - Score: {leader.score}</p>
+           <p>Answered: {Object.keys(leader.user.answers).length} - Asked: {Object.keys(leader.user.questions).length}</p>
+           <img alt={leader.user.name} src={leader.user.avatarURL} width="45px" /></li>)} 
        </ol>
         )
     }

@@ -12,22 +12,21 @@ class UserCard extends Component {
     }
 
     render() {
-        const { user, dispatch, authentication } = this.props;
+        const { user } = this.props;
 
         
         return (
             <div className="userCard" onClick={(e) => this.loginUser(e, user.id)}>
-                <img src={user.avatarURL} width="45px"/>
+                <img alt={user.name} src={user.avatarURL} width="45px"/>
                 {user.name}
             </div>
         )
     }
 }
 
-function mapStateToProps({ authentication, users}, { id }){
+function mapStateToProps({ users }, { id }){
     const userInfo = users[id];
     return {
-        authentication,
         user: userInfo
     }
 }
