@@ -10,6 +10,7 @@ import Logout from "./Logout";
 import QuestionDetail from "./QuestionDetail";
 import Ask from "./Ask";
 import Leaderboard from "./Leaderboard";
+import Oops from "./Oops";
 
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/leaderboard" component={Leaderboard}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/questions/:id" component={QuestionDetail}/>
+            <Route path="/error" component={Oops}/>
           </div>
           </Fragment>
         : 

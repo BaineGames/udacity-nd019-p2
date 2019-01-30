@@ -6,7 +6,7 @@ export function loadData(){
         questionList, userList
     }));
 }
-
+//exposing these functions from the data.js file is necessary to prevent app from talking to file directly
 export function saveQuestion( question ) { 
     return _saveQuestion( question );
 }
