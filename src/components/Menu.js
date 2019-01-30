@@ -22,7 +22,7 @@ class Menu extends Component {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/ask">
+                    <NavLink to="/add">
                         Ask
                     </NavLink>
                 </li>
