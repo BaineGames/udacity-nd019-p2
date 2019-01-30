@@ -6,3 +6,11 @@ export function loadData(){
         questionList, userList
     }));
 }
+
+export function saveQuestion( question ) { 
+    return _saveQuestion( question );
+}
+
+export function saveQuestionAnswer( answer ){
+    return _saveQuestionAnswer( answer );
+}

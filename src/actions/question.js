@@ -1,3 +1,6 @@
+import { saveQuestion } from "../utils/api";
+import { saveQuestionAnswer } from "../utils/api";
+
 export const GET_QUESTIONS = "GET_QUESTIONS";
 
 export function getQuestions(questionList){
@@ -7,11 +10,37 @@ export function getQuestions(questionList){
 export const ADD_QUESTION = "ADD_QUESTION";
 
 export function addQuestion(question){
-    return {type: ADD_QUESTION, question};
+    return (dispatch) => {
+        return saveQuestion(question)
+      .then((question) =>{
+        dispatch(formatQuestion(question))
+      })
+    }
 }
 
-export const ANSWER_QUESTION = "ANSWER_QUESTION";
+export const FORMAT_QUESTION = "FORMAT_QUESTION";
 
-export function answerQuestion(question){
-    return {type: ANSWER_QUESTION, question};
+export function formatQuestion(formattedQuestion){
+    return {
+      type: FORMAT_QUESTION,
+      formattedQuestion
+    }
+}
+
+export const ANSWER_UPDATE = "ANSWER_UPDATE";
+
+export function answerUpdate(answer){
+    return {
+        type: ANSWER_UPDATE,
+        answer
+    }
+}
+
+export function questionAnswered(answer) {
+    return (dispatch) => {
+        return saveQuestionAnswer(answer)
+        .then(() => {
+            dispatch(answerUpdate(answer))
+        })
+    }
 }

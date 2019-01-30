@@ -4,20 +4,21 @@ import { addQuestion } from "../actions/question";
 import { Redirect } from "react-router-dom";
 
 class Ask extends Component {
+
     state = {
-        optionOne : "",
-        optionTwo : "",
+        optA : "",
+        optB : "",
         redirectOut : false
     }
 
     askNewQuestion = (e) => {
         e.preventDefault();
         const { dispatch, auth } = this.props;
-        const { optionOne, optionTwo } = this.state;
-        dispatch(addQuestion({optionOne,optionTwo, auth}));
+        const { optA, optB } = this.state;
+        dispatch(addQuestion({optionOneText : optA, optionTwoText : optB, author : auth}));
         this.setState(() =>({
-            optionOne : "",
-            optionTwo : "",
+            optA : "",
+            optB : "",
             redirectOut : true
         }));
     }
@@ -30,10 +31,9 @@ class Ask extends Component {
         }));
     }
 
-
     render() {
 
-        const { redirectOut } = this.props;
+        const { redirectOut } = this.state;
         
         if(redirectOut){return <Redirect to="/"/>}
         return (
@@ -41,10 +41,10 @@ class Ask extends Component {
                 <h3>Would you Rather...</h3>
                 <form onSubmit={this.askNewQuestion}>
                 <input type="text" placeholder="do this thing"
-                onChange={(e) => this.saveOptionToState(e,"optionOne")}></input>
-                <p> ---- OR ---- </p>
+                onChange={(e) => this.saveOptionToState(e,"optA")}></input>
+                <h4> ---- OR ---- </h4>
                 <input type="text" placeholder="do this thing"
-                onChange={(e) => this.saveOptionToState(e,"optionTwo")}></input>
+                onChange={(e) => this.saveOptionToState(e,"optB")}></input>
                 <p><button type="submit">Ask</button></p>
                 </form>
             </div>
